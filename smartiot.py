@@ -51,14 +51,14 @@ def plot_wave(wave, torch=True):
 
 def play_audio(waveform, sample_rate, torch=True):
   ''' Reproduciendo señal de audio de PyTorch o NumPy'''
-if torch:
-  wave = wave.numpy()
-  num_channels, _ = waveform.shape
-  if num_channels == 1:
-    display(Audio(waveform[0], rate=sample_rate))
-  elif num_channels == 2:
-    display(Audio((waveform[0], waveform[1]), rate=sample_rate))
-  else:
-    raise ValueError("Waveform with more than 2 channels are not supported.")
-else: # numpy array
-  display(Audio(waveform, rate=sample_rate))
+  if torch:
+    wave = wave.numpy()
+    num_channels, _ = waveform.shape
+    if num_channels == 1:
+      display(Audio(waveform[0], rate=sample_rate))
+    elif num_channels == 2:
+      display(Audio((waveform[0], waveform[1]), rate=sample_rate))
+    else:
+      raise ValueError("Waveform with more than 2 channels are not supported.")
+  else: # numpy array
+    display(Audio(waveform, rate=sample_rate))
