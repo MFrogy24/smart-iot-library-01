@@ -1,10 +1,14 @@
 # Smart IoT Library
 import requests
 import torchaudio
+import numpy as np
+import matplotlib.pyplot as plt
+from IPython.display import Audio, display
 
 def version():
   ''' Show Smart IoT library version'''
-  print('Smart IoT Library ver. 1.2')
+  print('Smart IoT Library ver. 1.3')
+  print('torchaudio ver.', torchaudio._version_)
 
 
 def load_audio(url, fname):
@@ -38,3 +42,22 @@ def print_info(info, fname = None):
   print(f'       Mean: {wave.mean().item():6.3f}')
   print(f'    Std Dev: {wave.std().item():6.3f}')
   print(wave)
+
+  def plot_wave(wave, torch=True):
+  ''' Graficando señal de audio de PyTorch o NumPy'''
+  plt.figure()
+  plt.plot(wave[0].numpy() if torch else wave)
+  
+  def play_audio(waveform, sample_rate, torch=True):
+  ''' Reproduciendo señal de audio de PyTorch o NumPy'''
+  if torch:
+    waveform = waveform.numpy()
+    num_channels, _ = waveform.shape
+    if num_channels == 1:
+      display(Audio(waveform[0], rate=sample_rate))
+    elif num_channels == 2:
+      display(Audio((waveform[0], waveform[1]), rate=sample_rate))
+    else:
+      raise ValueError("Waveform with more than 2 channels are not supported.")
+  else: # numpy array
+    display(Audio(waveform, rate=sample_rate))
