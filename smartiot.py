@@ -9,7 +9,7 @@ from IPython.display import Audio, display
 def version():
   ''' Show Smart IoT library version'''
   print('Smart IoT Library ver. 1.3')
-  print('torchaudio ver.', torchaudio._version_)
+  print('torchaudio ver.', torchaudio.__version__)
 
 
 def load_audio(url, fname):
