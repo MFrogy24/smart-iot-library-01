@@ -4,7 +4,7 @@ import torchaudio
 
 def version():
   ''' Show Smart IoT library version'''
-  print('Smart IoT Library ver. 1.0')
+  print('Smart IoT Library ver. 0.1')
 
 
 def load_audio(url, fname):
