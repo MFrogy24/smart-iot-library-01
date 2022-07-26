@@ -52,7 +52,7 @@ def plot_wave(wave, torch=True):
 def play_audio(waveform, sample_rate, torch=True):
   ''' Reproduciendo señal de audio de PyTorch o NumPy'''
 if torch:
-  waveform = waveform.numpy()
+  waveform = wave.numpy()
   num_channels, _ = waveform.shape
   if num_channels == 1:
     display(Audio(waveform[0], rate=sample_rate))
