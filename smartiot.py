@@ -1,5 +1,6 @@
 # Smart IoT Library
 import requests
+import torch
 import torchaudio
 import numpy as np
 import matplotlib.pyplot as plt
