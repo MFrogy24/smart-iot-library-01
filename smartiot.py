@@ -45,8 +45,8 @@ def print_info(info, fname = None):
 
 def plot_wave(wave, torch=True):
   ''' Graficando señal de audio de PyTorch o NumPy'''
-plt.figure()
-plt.plot(wave[0].numpy() if torch else wave)
+  plt.figure()
+  plt.plot(wave[0].numpy() if torch else wave)
 
 def play_audio(waveform, sample_rate, torch=True):
   ''' Reproduciendo señal de audio de PyTorch o NumPy'''
