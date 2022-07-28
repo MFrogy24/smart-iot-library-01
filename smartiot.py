@@ -56,17 +56,20 @@ def plot_fft(wave, max_freq=None):
   plt.figure()
   plt.plot(wave3, lw=1, color='green')
 
-def play_audio(waveform, sample_rate, torch=True):
+def play_audio(wave, sample_rate, torch=True):
   ''' Reproduciendo señal de audio de PyTorch o NumPy'''
+  channels = (1 if wave.ndim == 1 else wave.shape[0])
   if torch:
-    waveform = waveform.numpy()
-    num_channels, _ = waveform.shape
-    if num_channels == 1:
-      display(Audio(waveform[0], rate=sample_rate))
-    elif num_channels == 2:
-      display(Audio((waveform[0], waveform[1]), rate=sample_rate))
+    wave = wave.numpy()
+    if channels == 1:
+      display(Audio(wave[0], rate=sample_rate))
+    elif channels == 2:
+      display(Audio((wave[0], wave[1]), rate=sample_rate))
     else:
       raise ValueError("Waveform with more than 2 channels are not supported.")
   else: # numpy array
-    display(Audio(waveform, rate=sample_rate))
+    if channels == 1:
+      display(Audio(wave, rate=sample_rate))
+    else:
+      display(Audio((wave[0], wave[1]), rate=sample_rate))
 
