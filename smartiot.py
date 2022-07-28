@@ -43,7 +43,7 @@ def print_info(info, fname = None):
   print(f'     Frames: {frames}')
   print(f'   Channels: {channels}')
   print(f'  File size: {sz} bytes')
-  print(f'Tensor size: {wave.element_size() * channels * frames} bytes')
+  print(f'Tensor size: {wave_size(wave)} bytes')
   print(f'      Dtype: {wave.dtype}')
   print(f'        Max: {wave.max().item():6.3f}')
   print(f'        Min: {wave.min().item():6.3f}')
