@@ -8,7 +8,7 @@ from IPython.display import Audio, display
 
 def version():
   ''' Show Smart IoT library version'''
-  print('Smart IoT Library ver. 1.4')
+  print('Smart IoT Library ver. 1.5')
   print('torchaudio ver.', torchaudio.__version__)
 
 
