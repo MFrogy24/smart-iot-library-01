@@ -62,7 +62,7 @@ def play_audio(wave, sample_rate, torch=True):
   if torch:
     wave = wave.numpy()
     if channels == 1:
-      display(Audio(wave[0], rate=sample_rate))
+      display(Audio(wave, rate=sample_rate))
     elif channels == 2:
       display(Audio((wave[0], wave[1]), rate=sample_rate))
     else:
