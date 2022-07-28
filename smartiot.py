@@ -8,9 +8,16 @@ from IPython.display import Audio, display
 
 def version():
   ''' Show Smart IoT library version'''
-  print('Smart IoT Library ver. 1.5')
+  print('Smart IoT Library ver. 1.6')
   print('torchaudio ver.', torchaudio.__version__)
 
+def wave_size(wave):
+  '''Regresa el tamaño de memoria'''
+  if wave.ndim == 1:
+    channels, frames = 1,  wave.shape[0]
+  else:
+    channels, frames = wave.shape
+  return wave.element_size() * channels * frames
 
 def load_audio(url, fname):
   ''' 
